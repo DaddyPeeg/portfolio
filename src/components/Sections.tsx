@@ -811,6 +811,7 @@ const ContactSection = ({
       .catch((error) => {
         setIsLoading(false);
         toast.error("Something went wrong");
+        console.log(error);
       });
   };
   return (
