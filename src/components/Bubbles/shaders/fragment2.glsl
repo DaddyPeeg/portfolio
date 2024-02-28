@@ -1,0 +1,47 @@
+varying vec3 vColor;
+varying vec3 vPosition;
+
+void main() {
+  vec3 color = vColor;
+
+  vec3 directionalLightDirection = vec3(0, 2, 0);
+  vec3 directionalLightColor = vec3(1, 10, 1);
+
+  // Normalize normal and view direction
+  vec3 normal = normalize(cross(dFdx(vPosition), dFdy(vPosition)));
+  vec3 viewDir = normalize(cameraPosition - vPosition);
+
+  // Ambient light (consider using material properties)
+  vec3 ambient = vec3(0.5) * color;
+
+  // Diffuse light from directional light
+  vec3 dirLightDir = normalize(directionalLightDirection);
+  float dp = max(0.0, dot(dirLightDir, normal));
+  vec3 dirDiffuseColor = dp * directionalLightColor * color;
+
+  // Specular light (Phong reflection)
+  vec3 r = reflect(-dirLightDir, normal);
+  float phong = max(0.0, dot(viewDir, r));
+  phong = pow(phong, 8.0);
+  vec3 specular = vec3(1.0) * phong;
+
+  // Combine ambient and diffuse
+  vec3 finalColor = ambient + dirDiffuseColor + specular;
+
+  // Set alpha for transparency based on Fresnel
+  float alpha = 0.1 - max(0.0, dot(viewDir, normal));
+  alpha = pow(alpha, 0.4); // Adjust the exponent for the level of transparency
+
+  // Add glare effect
+  alpha += 0.1 * pow(phong, 1.0);
+
+  // Clamp alpha to ensure it's in the valid range [0, 1]
+  alpha = clamp(alpha, 0.0, 1.0);
+
+  // Mix the color of the object inside the bubble with the bubble color
+  vec3 objectColor = vec3(0.5, 0.2, 0.2); // Replace this with the actual color of the object
+  finalColor = mix(finalColor, objectColor, 0.7 - alpha);
+
+  // Apply the final alpha
+  gl_FragColor = vec4(finalColor, alpha);
+}
