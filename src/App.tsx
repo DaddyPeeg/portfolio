@@ -34,6 +34,7 @@ function App() {
           setSection={setSection}
           isMenuOpen={isMenuOpen}
           setIsMenuOpen={setIsMenuOpen}
+          section={section}
         />
         <Canvas
           className="hello"

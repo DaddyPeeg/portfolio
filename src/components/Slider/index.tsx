@@ -535,17 +535,31 @@ const ProjectCard = ({
   itemNo?: number;
   type?: "personal" | "company";
 }) => {
+  const [reveal, setReveal] = useState(false);
+  const handleReveal = () => {
+    setReveal(true);
+    setTimeout(() => {
+      setReveal(false);
+    }, 3000);
+  };
   return (
-    <div className={`rounded-md ${className} relative overflow-hidden`}>
+    <div className={`rounded-md ${className} relative overflow-hidden `}>
+      {!reveal && (
+        <div
+          onClick={handleReveal}
+          className="bg-black/20 absolute object-cover top-0 w-full h-full z-10 backdrop-blur-sm cursor-crosshair"
+        />
+      )}
       <img
         src={cardInfo.image || image404}
         alt={cardInfo.name}
         className="object-cover h-full w-full absolute"
       />
+
       <div
-        className={`text-lg px-4 py-1 font-bold rounded-br-lg absolute top-0 left-0  ${
+        className={`text-lg px-4 py-1 font-bold rounded-br-lg absolute top-0 left-0 z-20 transition-all ease-out ${
           type === "personal" ? "bg-[#4f46e5]" : "bg-[#db2777]"
-        }`}
+        } ${reveal ? "translate-x-[-30rem]" : "translate-x-0"}`}
       >
         {cardInfo.name}
       </div>
@@ -553,10 +567,11 @@ const ProjectCard = ({
         className={`absolute bottom-0 left-0 w-full h-[3rem] transition-custom delay-500 overflow-hidden py-0 px-4 bg-transparent`}
       >
         <div className="h-full w-full flex justify-end items-center gap-2">
-          {/* <div className="text-black text-xs w-[10rem] leading-3">
-            {cardInfo.definition}
-          </div> */}
-          <div className="text-white flex text-[9px] rounded-full overflow-hidden">
+          <div
+            className={`text-white flex text-[9px] rounded-full overflow-hidden z-20 transition-all ${
+              reveal ? "translate-y-[10rem]" : "translate-y-0"
+            }`}
+          >
             <a href={cardInfo.githubUrl || `/#${cardInfo.title}`}>
               <button className="bg-red-500 p-1 w-16 flex items-center justify-center gap-1">
                 Code

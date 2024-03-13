@@ -1,18 +1,22 @@
 import { useEffect } from "react";
-import Logo from "./Logo";
 import LogoCam from "./newLogo";
 import anime from "animejs";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
-import { GoMail } from "react-icons/go";
 import { SiGmail } from "react-icons/si";
 
 interface PropsSet {
   setSection: (e: number) => void;
   isMenuOpen: boolean;
   setIsMenuOpen: (e: boolean) => void;
+  section: number;
 }
 
-const Navbar = ({ setSection, isMenuOpen, setIsMenuOpen }: PropsSet) => {
+const Navbar = ({
+  setSection,
+  isMenuOpen,
+  setIsMenuOpen,
+  section,
+}: PropsSet) => {
   const animateIn = async () => {
     anime({
       targets: "#vectorLetter path",
@@ -74,7 +78,14 @@ const Navbar = ({ setSection, isMenuOpen, setIsMenuOpen }: PropsSet) => {
     <>
       <div className="flex z-10 w-full fixed flex-col justify-center pointer-events-none">
         <div className="py-8 justify-between flex items-center z-10 max-w-screen-2xl w-screen px-8 pointer-events-none mx-auto ">
-          <div className="w-10 h-10 sm:w-16 sm:h-16 bg-gradient p-2 backdrop-blur-md rounded-md z-20 pointer-events-auto">
+          <div
+            className="w-10 h-10 sm:w-16 sm:h-16 bg-gradient p-2 backdrop-blur-md rounded-md z-20 pointer-events-auto cursor-pointer"
+            onClick={() => {
+              if (section !== 0) {
+                setSection(0);
+              }
+            }}
+          >
             <LogoCam />
           </div>
           <button
