@@ -98,10 +98,13 @@ const NewSlider = () => {
           {projects.map((project, index) => (
             <div key={index} className="item">
               <img src={project.img} alt={`imageProject-${index}`} />
-              <div className="intro max-w-md py-8 px-4">
-                <div className="title">{project.title}</div>
-                <div className="topic">{project.topic}</div>
-                <div className="des">{project.des}</div>
+              <div className="intro max-w-md py-8 px-8">
+                <div className="title text-6xl font-semibold">
+                  {project.title}
+                </div>
+                <div className="des relative text-lg mt-4 px-4 bg-white/10 rounded-md py-4 shadow-lg before:absolute before:w-10 before:h-10 before:bottom-[-1.5rem] before:bg-red-500 before:right-[-3rem] before:rounded-md before:bg-white/10 after:absolute after:w-5 after:h-5 after:bottom-[-2rem] after:bg-red-500 after:right-0 after:rounded-md after:bg-white/10">
+                  {project.des}
+                </div>
                 <button
                   onClick={hanldeShowDetail}
                   type="button"
@@ -110,15 +113,22 @@ const NewSlider = () => {
                   See more &#8599;
                 </button>
               </div>
-              <div className="detail">
-                <div className="title">{project.detail.title}</div>
-                <div className="des">{project.detail.des}</div>
-                <div className="specifications">
+              <div className="detail px-8">
+                <div className="title text-6xl font-semibold">
+                  {project.detail.title}
+                </div>
+                <div className="des relative max-w-md text-lg mt-4 px-4 bg-white/10 rounded-md py-4 shadow-lg before:absolute before:w-10 before:h-10 before:top-[-1.5rem] before:bg-red-500 before:left-[-3rem] before:rounded-md before:bg-white/10 after:absolute after:w-5 after:h-5 after:top-[-2rem] after:bg-red-500 after:left-0 after:rounded-md after:bg-white/10">
+                  {project.detail.des}
+                </div>
+                <div className="specifications max-w-md w-full">
                   {project.detail.tech.map((tech, index) => (
                     <div key={`tech-${index}`}>{tech}</div>
                   ))}
                 </div>
                 <div className="checkout">
+                  <button onClick={handleBack} id="back">
+                    Go Back &#8599;
+                  </button>
                   <a href={project.links.github}>
                     <button>Visit Github</button>
                   </a>
@@ -133,9 +143,6 @@ const NewSlider = () => {
         <div className="arrows">
           <button id="prev" ref={prevButton} onClick={handlePrevSlide}>
             <RiArrowLeftSLine />
-          </button>
-          <button onClick={handleBack} id="back">
-            Go Back &#8599;
           </button>
           <button id="next" ref={nextButton} onClick={handleNextSlide}>
             <RiArrowRightSLine />

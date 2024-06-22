@@ -25,12 +25,12 @@
   --item3-transform: translate(50%, 10%) scale(0.8);
   --item3-filter: blur(10px);
   --item3-zIndex: 9;
-  --item3-opacity: 1;
+  --item3-opacity: 0;
 
   --item4-transform: translate(90%, 20%) scale(0.5);
   --item4-filter: blur(30px);
   --item4-zIndex: 8;
-  --item4-opacity: 1;
+  --item4-opacity: 0;
 
   --item5-transform: translate(120%, 30%) scale(0.3);
   --item5-filter: blur(40px);
@@ -624,7 +624,7 @@ body {
 
 .carousel {
   height: 100%;
-  overflow: visible;
+  overflow: hidden;
   position: relative;
 }
 
@@ -632,8 +632,8 @@ body {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 1140px;
-  max-width: 90%;
+  width: 100%;
+  /* max-width: 90%; */
   transform: translateX(-50%);
   height: 80%;
 }
@@ -703,6 +703,7 @@ body {
   filter: var(--item3-filter);
   z-index: var(--item3-zIndex);
   opacity: var(--item3-opacity);
+  pointer-events: none;
 }
 
 .carousel .list .item:nth-child(4) {
@@ -710,6 +711,7 @@ body {
   filter: var(--item4-filter);
   z-index: var(--item4-zIndex);
   opacity: var(--item4-opacity);
+  pointer-events: none;
 }
 
 .carousel .list .item:nth-child(5) {
@@ -722,7 +724,7 @@ body {
 
 .arrows {
   position: absolute;
-  bottom: 10rem;
+  bottom: 6rem;
   width: 1140px;
   max-width: 90%;
   left: 50%;
@@ -755,20 +757,6 @@ body {
   @apply px-4 text-black rounded-md py-2 shadow-md border transition hover:scale-[1.1];
   opacity: 0;
   pointer-events: none;
-}
-
-.carousel .list .item .intro .title {
-  font-size: 2em;
-  line-height: 0.8em;
-}
-
-.carousel .list .item .intro .topic {
-  font-size: 4em;
-  font-weight: 500;
-}
-
-.carousel .list .item .intro .des {
-  font-size: small;
 }
 
 .carousel .list .item .intro .seeMore {
@@ -920,18 +908,16 @@ body {
   position: absolute;
   right: 0;
   text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   @apply pl-16;
   top: 65%;
   transform: translateY(-50%);
 }
-.carousel.showDetail .list .item .detail .title {
-  font-size: 4em;
-  line-height: 1.2em;
-}
 .carousel.showDetail .list .item .specifications {
   display: flex;
   gap: 10px;
-  width: 100%;
   border-top: 1px solid white;
   margin-top: 20px;
   @apply flex-row-reverse;
@@ -939,23 +925,26 @@ body {
 .carousel.showDetail .list .item .detail .specifications div {
   margin-top: 20px;
   text-align: center;
-  @apply text-2xl;
+  @apply text-5xl;
   flex-shrink: 0;
 }
 
 .carousel.showDetail .list .item .detail .checkout button {
   font-family: Poppins;
   background-color: transparent;
-  border: 1px solid #555;
+  font-size: 1.2rem;
+  border: 1px solid white;
   margin-left: 5px;
   margin-top: 1rem;
   font-weight: 500;
-  padding: 5px 10px;
+  padding: 10px 20px;
+  min-width: 10rem;
   border-radius: 5px;
 }
 
-.carousel.showDetail .list .item .checkout button:nth-child(2) {
-  background-color: #693eff;
+.carousel.showDetail .list .item .checkout a:nth-child(3) button {
+  background-color: rgb(1, 163, 4);
+  @apply hover:bg-[#00ff00] transition hover:text-black;
   color: #eee;
 }
 
@@ -986,7 +975,7 @@ body {
   opacity: 1;
   pointer-events: auto;
 }
-.carousel::before {
+/* .carousel::before {
   width: 500px;
   height: 300px;
   content: "";
@@ -1002,7 +991,7 @@ body {
 }
 .carousel.showDetail::before {
   transform: translate(-100%, -50%) rotate(70deg);
-}
+} */
 .customShape::before {
   content: "";
   height: 80%;

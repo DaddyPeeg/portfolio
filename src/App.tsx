@@ -1,6 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useEffect, useState } from "react";
-import { sceneDefaults } from "./utils/cameraDefaults";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { LoadingScreen } from "./components/Loading";
 import { Leva } from "leva";
 import { Scroll, ScrollControls } from "@react-three/drei";
@@ -17,13 +16,28 @@ function App() {
   const [start, setStart] = useState(false);
   const [section, setSection] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const main = useRef(null);
+
+  console.log(isMenuOpen);
+
+  const click = useCallback(() => {
+    setIsMenuOpen(false);
+  }, [isMenuOpen, main.current]);
+
+  useEffect(() => {
+    if (!main.current) return;
+    (main.current as Element).addEventListener("click", click);
+    return () => {
+      (main.current! as Element).removeEventListener("click", click);
+    };
+  }, [main.current]);
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [section]);
   const isMobile = useMediaQuery("(max-width:600px)");
   return (
-    <section className="w-full h-screen relative">
+    <section className="w-full h-screen relative" ref={main}>
       <Leva hidden />
       <MotionConfig
         transition={{
