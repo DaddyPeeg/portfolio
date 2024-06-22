@@ -1,0 +1,57 @@
+<svg width="283" height="354" viewBox="0 0 283 354" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 1">
+<path id="line-3" d="M30 324C192.726 324 253 283 253 173" stroke="url(#paint0_linear_6_54)" stroke-width="59" stroke-linecap="round"/>
+<path id="line-2" d="M253 182C253 61 225 40 93 30" stroke="url(#paint1_linear_6_54)" stroke-width="59" stroke-linecap="round"/>
+<path id="line-1" d="M30 31V324" stroke="url(#paint2_linear_6_54)" stroke-width="59" stroke-linecap="round"/>
+<g id="Mask group">
+<mask id="mask0_6_54" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="137" y="140" width="37" height="64">
+<path id="lense-2" d="M143 198C173.5 198 178.5 148 143 146" stroke="white" stroke-width="11" stroke-linecap="round"/>
+</mask>
+<g mask="url(#mask0_6_54)">
+<rect id="Rectangle 1" x="-79" y="-38" width="460" height="439" fill="url(#paint3_angular_6_54)"/>
+</g>
+</g>
+<g id="Mask group_2">
+<mask id="mask1_6_54" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="110" y="140" width="39" height="64">
+<path id="lense-1" d="M141.5 146C110.5 144.5 104 198 142.5 198" stroke="white" stroke-width="11" stroke-linecap="round"/>
+</mask>
+<g mask="url(#mask1_6_54)">
+<rect id="Rectangle 2" x="-79" y="-38" width="460" height="439" fill="url(#paint4_angular_6_54)"/>
+</g>
+</g>
+<g id="Mask group_3">
+<mask id="mask2_6_54" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="82" y="119" width="120" height="107">
+<path id="camera" d="M88 125V208C88 214.627 93.3726 220 100 220H184C190.627 220 196 214.627 196 208V137C196 130.373 190.627 125 184 125H119" stroke="white" stroke-width="11" stroke-linecap="round"/>
+</mask>
+<g mask="url(#mask2_6_54)">
+<rect id="Rectangle 3" x="-79" y="-38" width="460" height="439" fill="url(#paint5_angular_6_54)"/>
+</g>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_6_54" x1="214" y1="275" x2="116" y2="315" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0066FF"/>
+<stop offset="1" stop-color="#5D14A2"/>
+</linearGradient>
+<linearGradient id="paint1_linear_6_54" x1="173" y1="-22" x2="190" y2="166" gradientUnits="userSpaceOnUse">
+<stop stop-color="#00FF0A"/>
+<stop offset="1" stop-color="#0167FF"/>
+</linearGradient>
+<linearGradient id="paint2_linear_6_54" x1="30.5" y1="31" x2="30" y2="452" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF0000"/>
+<stop offset="1" stop-color="#141DEA" stop-opacity="0.98"/>
+</linearGradient>
+<radialGradient id="paint3_angular_6_54" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(151 181.5) rotate(-127.513) scale(62.4039 65.3891)">
+<stop stop-color="#0038FF"/>
+<stop offset="1" stop-color="#FF0000"/>
+</radialGradient>
+<radialGradient id="paint4_angular_6_54" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(151 181.5) rotate(-127.513) scale(62.4039 65.3891)">
+<stop stop-color="#0038FF"/>
+<stop offset="1" stop-color="#FF0000"/>
+</radialGradient>
+<radialGradient id="paint5_angular_6_54" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(151 181.5) rotate(-127.513) scale(62.4039 65.3891)">
+<stop stop-color="#0038FF"/>
+<stop offset="1" stop-color="#FF0000"/>
+</radialGradient>
+</defs>
+</svg>
