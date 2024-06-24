@@ -732,14 +732,14 @@ const SkillsSection = ({
     // text-transparent bg-clip-text
     <Section listNumber={1} section={section} setSection={setSection}>
       <motion.div className="flex flex-col" whileInView={"visible"}>
-        <h2 className="text-3xl w-0 hover:w-[13ch] whitespace-nowrap bg-gradient font-bold hover:text-transparent text-white transition-custom bg-clip-text">
+        <h2 className="text-xl sm:text-3xl w-0 hover:w-[13ch] whitespace-nowrap bg-gradient font-bold hover:text-transparent text-white transition-custom bg-clip-text">
           Technical Skills
         </h2>
         <div className="mt-2 space-y-4">
           {skills.map((skill, index) => (
             <div className="w-64" key={index}>
               <motion.h3
-                className="text-md font-bold text-gray-300"
+                className="text-xs sm:text-base font-bold text-gray-300"
                 initial={{
                   opacity: 0,
                 }}
@@ -778,14 +778,14 @@ const SkillsSection = ({
           ))}
         </div>
         <div className="mt-8">
-          <h2 className="text-3xl w-0 hover:w-[13ch] whitespace-nowrap bg-gradient font-bold hover:text-transparent text-white transition-custom bg-clip-text">
+          <h2 className="text-xl sm:text-3xl w-0 hover:w-[13ch] whitespace-nowrap bg-gradient font-bold hover:text-transparent text-white transition-custom bg-clip-text">
             Videography
           </h2>
           <div className="mt-2 space-y-4">
             {other.map((lng, index) => (
               <div className="w-64" key={index}>
                 <motion.h3
-                  className="text-md font-bold text-gray-300"
+                  className="text-xs sm:text-base font-bold text-gray-300"
                   initial={{
                     opacity: 0,
                   }}
@@ -891,10 +891,10 @@ const ContactSection = ({
       section={section}
       setSection={setSection}
     >
-      <h2 className="text-3xl w-0 hover:w-[13ch] whitespace-nowrap bg-gradient font-bold hover:text-transparent text-white transition-custom bg-clip-text">
+      <h2 className="text-xl sm:text-3xl w-0 hover:w-[13ch] whitespace-nowrap bg-gradient font-bold hover:text-transparent text-white transition-custom bg-clip-text">
         Contact Me
       </h2>
-      <div className="md:w-96 rounded-md bg-gradient p-1 mt-8 relative before:absolute before:w-full before:h-full before:-z-10 before:bg-gradient before:left-0 before:top-0 before:blur-[40px]">
+      <div className="md:w-96 rounded-md bg-gradient p-1 mt-4 relative before:absolute before:w-full before:h-full before:-z-10 before:bg-gradient before:left-0 before:top-0 before:blur-[40px]">
         <div className="p-8 rounded-md w-full max-w-full bg-white">
           <form onSubmit={handleSubmit}>
             <label

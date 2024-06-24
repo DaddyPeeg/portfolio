@@ -99,26 +99,28 @@ const NewSlider = () => {
             <div key={index} className="item">
               <img src={project.img} alt={`imageProject-${index}`} />
               <div className="intro max-w-md py-8 px-8">
-                <div className="title text-6xl font-semibold">
+                <div className="title text-2xl xl:text-4xl text-center sm:text-left font-semibold">
                   {project.title}
                 </div>
-                <div className="des relative text-lg mt-4 px-4 bg-white/10 rounded-md py-4 shadow-lg before:absolute before:w-10 before:h-10 before:bottom-[-1.5rem] before:bg-red-500 before:right-[-3rem] before:rounded-md before:bg-white/10 after:absolute after:w-5 after:h-5 after:bottom-[-2rem] after:bg-red-500 after:right-0 after:rounded-md after:bg-white/10">
+                <div className="des text-violet-400 relative text-sm lg:text-lg mt-4 px-4 bg-white/10 rounded-md py-4 shadow-lg before:absolute before:w-10 before:h-10 before:bottom-[-1.5rem] before:right-[-3rem] before:rounded-md before:bg-white/10 after:absolute after:w-5 after:h-5 after:bottom-[-2rem]  after:right-0 after:rounded-md after:bg-white/10">
                   {project.des}
                 </div>
                 <button
                   onClick={hanldeShowDetail}
                   type="button"
-                  className="seeMore"
+                  className="seeMore text-xs lg:text-sm"
                 >
                   See more &#8599;
                 </button>
               </div>
               <div className="detail px-8">
-                <div className="title text-6xl font-semibold">
+                <div className="title text-center sm:text-right text-4xl lg:text-5xl xl:text-6xl font-semibold">
                   {project.detail.title}
                 </div>
-                <div className="des relative max-w-md text-lg mt-4 px-4 bg-white/10 rounded-md py-4 shadow-lg before:absolute before:w-10 before:h-10 before:top-[-1.5rem] before:bg-red-500 before:left-[-3rem] before:rounded-md before:bg-white/10 after:absolute after:w-5 after:h-5 after:top-[-2rem] after:bg-red-500 after:left-0 after:rounded-md after:bg-white/10">
-                  {project.detail.des}
+                <div className="des relative text-left sm:text-right max-w-md text-sm max-h-60 lg:text-lg mt-4 bg-white/10 rounded-md shadow-lg before:absolute before:w-10 before:h-10 before:top-[-1.5rem] before:left-[-3rem] before:rounded-md before:bg-white/10 after:absolute after:w-5 after:h-5 after:top-[-2rem] after:left-0 after:rounded-md after:bg-white/10">
+                  <div className="max-h-60 p-4 w-full overflow-y-auto">
+                    {project.detail.des}
+                  </div>
                 </div>
                 <div className="specifications max-w-md w-full">
                   {project.detail.tech.map((tech, index) => (

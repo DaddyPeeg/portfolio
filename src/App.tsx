@@ -18,17 +18,23 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const main = useRef(null);
 
-  console.log(isMenuOpen);
+  const isProduction = process.env.NODE_ENV === "production";
 
-  const click = useCallback(() => {
-    setIsMenuOpen(false);
-  }, [isMenuOpen, main.current]);
+  const click = useCallback(
+    (e: any) => {
+      setIsMenuOpen(false);
+    },
+    [isMenuOpen, main.current]
+  );
 
   useEffect(() => {
     if (!main.current) return;
-    (main.current as Element).addEventListener("click", click);
+    (main.current as Element).children[2].addEventListener("click", click);
     return () => {
-      (main.current! as Element).removeEventListener("click", click);
+      (main.current! as Element).children[2].removeEventListener(
+        "click",
+        click
+      );
     };
   }, [main.current]);
 
@@ -38,6 +44,18 @@ function App() {
   const isMobile = useMediaQuery("(max-width:600px)");
   return (
     <section className="w-full h-screen relative" ref={main}>
+      <div
+        className={`fixed bottom-4 left-4 h-8 w-8 items-center justify-center text-xs bg-black rounded-full z-10 ${
+          !isProduction ? "flex" : "hidden"
+        }`}
+      >
+        <span className="block sm:hidden">xs</span>
+        <span className="hidden sm:block md:hidden">sm</span>
+        <span className="hidden md:block lg:hidden">md</span>
+        <span className="hidden lg:block xl:hidden">lg</span>
+        <span className="hidden xl:block 2xl:hidden">xl</span>
+        <span className="hidden 2xl:block">xl+</span>
+      </div>
       <Leva hidden />
       <MotionConfig
         transition={{

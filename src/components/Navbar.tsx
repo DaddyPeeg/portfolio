@@ -7,7 +7,7 @@ import { SiGmail } from "react-icons/si";
 interface PropsSet {
   setSection: (e: number) => void;
   isMenuOpen: boolean;
-  setIsMenuOpen: (e: boolean) => void;
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   section: number;
 }
 
@@ -89,7 +89,7 @@ const Navbar = ({
             <LogoCam />
           </div>
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => setIsMenuOpen((prev) => !prev)}
             className="sm:p-3 p-2 bg-indigo-600 w-8 h-8 sm:w-11 sm:h-11 rounded-md z-20 pointer-events-auto"
           >
             <div

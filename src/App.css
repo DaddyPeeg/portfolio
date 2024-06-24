@@ -633,7 +633,6 @@ body {
   top: 0;
   left: 50%;
   width: 100%;
-  /* max-width: 90%; */
   transform: translateX(-50%);
   height: 80%;
 }
@@ -642,20 +641,15 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  width: 70%;
+  @apply sm:w-[70%] w-full;
   height: 100%;
   font-size: 15px;
 }
 
 .carousel .list .item img {
-  width: 80%;
   height: auto;
-  max-height: 90%;
   position: absolute;
-  right: -40%;
-  top: 60%;
-  @apply object-cover rounded-3xl;
-  transform: translateY(-50%);
+  @apply object-cover max-h-[40%] sm:max-h-[80%] scale-[1.2] sm:scale-[1] w-[60%] sm:w-[80%] rounded-3xl top-[20%] right-[19%] sm:right-[-40%] sm:top-[60%] sm:translate-y-[-50%];
 }
 
 .carousel .list .item .detail {
@@ -665,9 +659,8 @@ body {
 
 .carousel .list .item .intro {
   position: absolute;
-  top: 60%;
-  transform: translateY(-50%);
-  width: 400px;
+  /* flex flex-col items-center justify-center */
+  @apply sm:w-[400px] w-full left-[50%] sm:left-0 sm:translate-x-0 translate-x-[-50%] bottom-[-5%] sm:top-[60%] sm:translate-y-[-50%] flex sm:block flex-col items-center justify-center;
   opacity: 0;
   pointer-events: none;
 }
@@ -895,23 +888,19 @@ body {
   pointer-events: none;
 }
 .carousel .list .item:nth-child(2) img {
-  transition: right 0.5s, top 0.5s;
+  transition: right 0.5s, top 0.5s, filter 0.5s;
 }
 .carousel.showDetail .list .item:nth-child(2) img {
-  right: 50%;
-  top: 65%;
+  @apply top-[35%] blur-sm brightness-50 sm:blur-0 sm:brightness-100 right-[10%] sm:top-[65%] sm:right-[50%];
 }
 .carousel.showDetail .list .item:nth-child(2) .detail {
   opacity: 1;
   pointer-events: auto;
-  width: 50%;
   position: absolute;
   right: 0;
-  text-align: right;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  @apply pl-16;
+  @apply md:pl-16 w-full sm:w-[50%] items-center sm:items-end;
   top: 65%;
   transform: translateY(-50%);
 }
@@ -920,25 +909,23 @@ body {
   gap: 10px;
   border-top: 1px solid white;
   margin-top: 20px;
-  @apply flex-row-reverse;
+  @apply justify-center sm:justify-end;
 }
 .carousel.showDetail .list .item .detail .specifications div {
   margin-top: 20px;
   text-align: center;
-  @apply text-5xl;
+  @apply xl:text-5xl text-xl lg:text-4xl md:text-2xl;
   flex-shrink: 0;
 }
 
 .carousel.showDetail .list .item .detail .checkout button {
   font-family: Poppins;
   background-color: transparent;
-  font-size: 1.2rem;
   border: 1px solid white;
   margin-left: 5px;
   margin-top: 1rem;
   font-weight: 500;
-  padding: 10px 20px;
-  min-width: 10rem;
+  @apply text-xs xl:text-lg px-2 xl:px-4 py-2;
   border-radius: 5px;
 }
 
