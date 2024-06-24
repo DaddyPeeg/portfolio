@@ -9,7 +9,6 @@ const NewSlider = () => {
   const prevButton = useRef(null);
 
   const hanldeShowDetail = useCallback(() => {
-    console.log("wew");
     if (carousel.current) {
       (carousel.current as Element).classList.add("showDetail");
     }
