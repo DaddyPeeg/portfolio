@@ -3,12 +3,9 @@ import { ReactNode, useCallback, useEffect, useRef } from "react";
 import { useState } from "react";
 import { IoMdDownload } from "react-icons/io";
 import useMouseNearCorner from "../utils/nearScreen";
-import { BsArrowRight } from "react-icons/bs";
-import { IoMdClose } from "react-icons/io";
 import { Project, projects } from "../projects";
 import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
-import SliderMain from "./Slider";
 import {
   MdKeyboardDoubleArrowDown,
   MdKeyboardDoubleArrowUp,
@@ -143,168 +140,6 @@ export type ArrayCategorized = {
   projects: Page[];
 };
 
-// const ProjectSection = ({
-//   section,
-//   setSection,
-// }: {
-//   section: number;
-//   setSection: (section: number) => void;
-// }) => {
-//   const [data, setData] = useState<ArrayCategorized[] | null>(null);
-//   const [click, setClick] = useState<number | null>(null);
-//   const [hover, setHover] = useState<number | null>(null);
-//   const [isAnimating, setIsAnimating] = useState(false);
-
-//   const categorizeProjects = useCallback(
-//     (projects: Project[]): ArrayCategorized[] => {
-//       function chunkArray(array: Project[], chunkSize: number): Page[] {
-//         const result: Page[] = [];
-//         let pages = 0;
-//         for (let i = 0; i < array.length; i += chunkSize) {
-//           pages++;
-//           const item: Page = {
-//             page: pages,
-//             items: [...array.slice(i, i + chunkSize)],
-//           };
-//           result.push(item);
-//         }
-//         return result;
-//       }
-
-//       const categorized: CategorizedProjects = {};
-
-//       projects.forEach((project) => {
-//         if (!categorized[project.category]) {
-//           categorized[project.category] = [];
-//         }
-//         categorized[project.category].push({
-//           category: project.category,
-//           name: project.name,
-//           title: project.title,
-//           image: project.image,
-//           definition: project.definition,
-//           live: project.live,
-//           url: project.url,
-//           githubUrl: project.githubUrl,
-//         });
-//       });
-
-//       return Object.entries(categorized).map(([key, value]) => ({
-//         category: key,
-//         projects: chunkArray(value, 4),
-//       }));
-//     },
-//     [data]
-//   );
-
-//   useEffect(() => {
-//     if (!data) setData(categorizeProjects(projects));
-//   }, []);
-//   return (
-//     <Section
-//       listNumber={2}
-//       section={section}
-//       setSection={setSection}
-//       className="py-32 bg-white"
-//     >
-//       <div className="flex w-full h-full flex-col md:flex-row items-center gap-2 lg:gap-8 backdrop-blur-lg">
-//         <div className="h-full flex-1 border-2 w-full rounded-lg overflow-hidden">
-//           <SliderMain
-//             isAnimating={isAnimating}
-//             setIsAnimating={setIsAnimating}
-//             data={data}
-//             clickIndex={click}
-//             hoverIndex={hover}
-//           />
-//         </div>
-//         <div className="flex gap-2 w-full md:w-auto md:gap-2 lg:gap-8 md:flex-col lg:flex-row lg:items-center md:h-full">
-//           {data?.map((item, i) => (
-//             <div
-//               onClick={() => {
-//                 if (!isAnimating) {
-//                   if (click === i) {
-//                     setClick(null);
-//                     setHover(null);
-//                   } else {
-//                     setClick(i);
-//                     setHover(null);
-//                   }
-//                 }
-//               }}
-//               onMouseEnter={() => {
-//                 if (!isAnimating) {
-//                   if (click === null) {
-//                     setHover(i);
-//                   }
-//                 }
-//               }}
-//               onMouseLeave={() => {
-//                 if (!isAnimating) {
-//                   if (click === null && hover !== null) {
-//                     setHover(null);
-//                   }
-//                 }
-//               }}
-//               key={i}
-//               // md:h-[30rem] h-[2rem]
-
-//               className={`lg:h-[30rem] ${
-//                 click === null ||
-//                 (i === click && "lg:scale-[1.2] lg:glow-style")
-//               } ${
-//                 hover === i && "lg:scale-[1.2] lg:glow-style"
-//               } group md:w-[15rem] rounded-md sm:p-8 px-4 py-2 relative gradient-border-mask transition-custom flex overflow-hidden flex-1  lg:flex-none items-center`}
-//             >
-//               <div
-//                 className={`bg-black/40 backdrop-blur-md w-0 ${
-//                   click === null || (i === click && "w-full")
-//                 } h-full transition-custom rounded-md absolute inset-0 z-[-1]`}
-//               />
-//               <div className="w-full z-20 gap-2 flex justify-between items-center ">
-//                 <h1 className="text-sm md:text-4xl text-center font-bold">
-//                   {item.category}
-//                 </h1>
-//                 <p className="p-1 cursor-pointer rounded-full bg-transparent backdrop-blur-lg border-2">
-//                   {click === null || i !== click ? (
-//                     <BsArrowRight className="w-3 h-3 md:w-auto md:h-auto" />
-//                   ) : (
-//                     <IoMdClose className="w-3 h-3 md:w-auto md:h-auto" />
-//                   )}
-//                 </p>
-//               </div>
-//               <AnimatePresence>
-//                 {click === 0 && i === click && (
-//                   <motion.h2
-//                     initial={{ x: -100, opacity: 0 }}
-//                     animate={{ x: 0, opacity: 1 }}
-//                     exit={{ x: -100, opacity: 0 }}
-//                     transition={{ duration: 0.5 }}
-//                     className="absolute bottom-8 w-[20ch] text-sm hidden md:block"
-//                   >
-//                     These are the projects I've finished. I'm adding new
-//                     features and improving existing ones.
-//                   </motion.h2>
-//                 )}
-//                 {click === 1 && i === click && (
-//                   <motion.h2
-//                     initial={{ x: -100, opacity: 0 }}
-//                     animate={{ x: 0, opacity: 1 }}
-//                     exit={{ x: -100, opacity: 0 }}
-//                     transition={{ duration: 0.5 }}
-//                     className="absolute bottom-8 w-[20ch] text-sm hidden md:block"
-//                   >
-//                     These are the projects I'm now engaged in.
-//                   </motion.h2>
-//                 )}
-//               </AnimatePresence>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </Section>
-//   );
-// };
-
 const ProjectSection = ({
   section,
   setSection,
@@ -313,9 +148,6 @@ const ProjectSection = ({
   setSection: (section: number) => void;
 }) => {
   const [data, setData] = useState<ArrayCategorized[] | null>(null);
-  const [click, setClick] = useState<number | null>(null);
-  const [hover, setHover] = useState<number | null>(null);
-  const [isAnimating, setIsAnimating] = useState(false);
 
   const categorizeProjects = useCallback(
     (projects: Project[]): ArrayCategorized[] => {
