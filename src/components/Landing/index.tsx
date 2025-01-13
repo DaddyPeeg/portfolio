@@ -97,12 +97,12 @@ export const Landing = ({ section }: { section?: number }) => {
         <mesh>
           <planeGeometry args={[1000, 1000]} />
           <meshStandardMaterial
-            color="#00ffff"
-            roughness={0.5}
+            color="#ff00ff"
+            roughness={1}
             depthTest={false}
           />
         </mesh>
-        <Swarm count={15000} />
+        <Swarm count={2000} />
         <Postpro />
         <group ref={blobRef} scale={3} position={[4, -23, -50]}>
           <Bubble />
@@ -124,42 +124,43 @@ function Swarm({ count, dummy = new THREE.Object3D() }) {
       const t = Math.random() * 100;
       const factor = 20 + Math.random() * 100;
       const speed = 0.01 + Math.random() / 200;
-      const xFactor = -50 + Math.random() * 100;
-      const yFactor = -50 + Math.random() * 100;
-      const zFactor = -50 + Math.random() * 100;
+      const xFactor = -100 + Math.random() * 200; // Increase spread
+      const yFactor = -100 + Math.random() * 200; // Increase spread
+      const zFactor = -100 + Math.random() * 200; // Increase spread
       temp.push({ t, factor, speed, xFactor, yFactor, zFactor, mx: 0, my: 0 });
     }
     return temp;
   }, [count]);
+
   const isMobile = useMediaQuery("(max-width:600px)");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
   useFrame((state) => {
-    if (!isMobile && !reduceMotion.matches) {
-      light.current.position.set(
-        (-state.mouse.x * state.viewport.width) / 5,
-        (-state.mouse.y * state.viewport.height) / 5,
-        0
-      );
-    } else {
-      light.current.position.set(
-        (0 * state.viewport.width) / 5,
-        (0 * state.viewport.height) / 5,
-        0
-      );
-    }
+    const { mouse, viewport } = state;
+
+    const lightX =
+      !isMobile && !reduceMotion.matches ? (-mouse.x * viewport.width) / 5 : 20;
+    const lightY =
+      !isMobile && !reduceMotion.matches
+        ? (-mouse.y * viewport.height) / 5
+        : 20;
+
+    light.current.position.set(lightX, lightY, 0);
 
     particles.forEach((particle, i) => {
       let { t, factor, speed, xFactor, yFactor, zFactor } = particle;
       t = particle.t += speed / 5;
+
       const a = Math.cos(t) + Math.sin(t * 1) / 10;
       const b = Math.sin(t) + Math.cos(t * 2) / 10;
       const s = Math.cos(t);
+
       if (!isMobile && !reduceMotion.matches) {
-        particle.mx += (state.mouse.x * 1000 - particle.mx) * 0.01;
-        particle.my += (state.mouse.y * 1000 - 1 - particle.my) * 0.01;
+        particle.mx += (mouse.x * 1000 - particle.mx) * 0.01;
+        particle.my += (mouse.y * 1000 - 1 - particle.my) * 0.01;
       } else {
-        particle.mx += (0 * 1000 - particle.mx) * 0.01;
-        particle.my += (0 * 1000 - 1 - particle.my) * 0.01;
+        particle.mx += (100 - particle.mx) * 0.01;
+        particle.my += (100 - particle.my) * 0.01;
       }
 
       dummy.position.set(
@@ -176,6 +177,7 @@ function Swarm({ count, dummy = new THREE.Object3D() }) {
           Math.cos((t / 10) * factor) +
           (Math.sin(t * 3) * factor) / 10
       );
+
       dummy.scale.setScalar(s);
       dummy.rotation.set(s * 5, s * 5, s * 5);
       dummy.updateMatrix();
@@ -183,16 +185,17 @@ function Swarm({ count, dummy = new THREE.Object3D() }) {
     });
     mesh.current.instanceMatrix.needsUpdate = true;
   });
+
   return (
     <>
-      <pointLight ref={light} distance={40} intensity={8} color="lightblue">
+      <pointLight ref={light} distance={0} intensity={0.5} color="lightblue">
         <mesh scale={2}>
-          <sphereGeometry args={[4, 1]} />
+          <sphereGeometry args={[5, 0]} />
         </mesh>
       </pointLight>
       <instancedMesh ref={mesh} args={[null, null, count]}>
-        <dodecahedronGeometry args={[1, 0]} />
-        <meshStandardMaterial color="#020000" roughness={0.5} />
+        <dodecahedronGeometry args={[2.3, 0]} />
+        <meshStandardMaterial color="#020000" roughness={0.36} />
       </instancedMesh>
     </>
   );
@@ -205,9 +208,9 @@ function Postpro() {
   return (
     // <></>
     <Effects disableGamma>
-      <waterPass ref={water} factor={0.5} />
+      <waterPass ref={water} factor={0.2} />
       <unrealBloomPass args={[undefined, 1.25, 1, 0]} />
-      <filmPass args={[0, 0, 2000, false]} />
+      {/* <filmPass args={[0, 0, 0, false]} /> */}
       <lUTPass lut={data.texture} intensity={1} />
     </Effects>
   );
