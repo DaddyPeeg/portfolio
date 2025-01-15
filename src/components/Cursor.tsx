@@ -53,6 +53,7 @@ export const Cursor = () => {
           e.target.tagName.toLowerCase() === "input" ||
           e.target.tagName.toLowerCase() === "textarea"
         ) {
+          console.log("wewew");
           setHoverButton(true);
         } else {
           setHoverButton(false);
@@ -74,7 +75,7 @@ export const Cursor = () => {
             : "bg-indigo-500 w-3 h-3"
         }`}
         ref={cursorOutline}
-      ></div>
+      />
     </>
   );
 };
