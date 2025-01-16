@@ -29,7 +29,15 @@ import { Gyroscope } from "three/examples/jsm/misc/Gyroscope.js";
 
 extend({ WaterPass, UnrealBloomPass, FilmPass, LUTPass });
 
-export const Landing = ({ section }: { section?: number }) => {
+export const Landing = ({
+  section,
+  selectedSkill,
+}: {
+  section?: number;
+  selectedSkill: number;
+}) => {
+  // const { selectedSkill } = useSkill();
+  // console.log(selectedSkill);
   const { viewport } = useThree();
   let data = {
     initial: new THREE.Vector3(0, 0, -50),
@@ -105,7 +113,7 @@ export const Landing = ({ section }: { section?: number }) => {
         <Swarm count={2000} />
         <Postpro />
         <group ref={blobRef} scale={3} position={[4, -23, -50]}>
-          <Bubble />
+          <Bubble selectedSkill={selectedSkill} />
         </group>
       </motion.group>
       <motion.group position={[3, -215, 22]} ref={earthRef}>

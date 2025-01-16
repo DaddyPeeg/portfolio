@@ -15,6 +15,7 @@ import UpdatedLogo from "./UpdatedLogo";
 import anime from "animejs";
 import useMediaQuery from "../utils/useMediaQuery";
 import NewSlider from "./NewSlider";
+import { SkillProvider, useSkill } from "@/context/SkillContext";
 // import { BentoGridDemo } from "./BentoSample";
 // import MousePressScrollArea from "./MousePressScrollArea";
 
@@ -114,19 +115,27 @@ export const Interface = ({
   section,
   started,
   setSection,
+  selectSkill,
 }: {
   section: number;
   started?: boolean;
   setSection: (section: number) => void;
+  selectSkill: (skillNumber: number) => void;
 }) => {
   if (started)
     return (
+      // <SkillProvider>
       <div className="flex flex-col items-center w-screen">
         <AboutSection section={section} setSection={setSection} />
-        <SkillsSection section={section} setSection={setSection} />
+        <SkillsSection
+          selectSkill={selectSkill}
+          section={section}
+          setSection={setSection}
+        />
         <ProjectSection section={section} setSection={setSection} />
         <ContactSection section={section} setSection={setSection} />
       </div>
+      // </SkillProvider>
     );
   return <></>;
 };
@@ -564,9 +573,11 @@ const other = [
 const SkillsSection = ({
   section,
   setSection,
+  selectSkill,
 }: {
   section: number;
   setSection: (section: number) => void;
+  selectSkill: (skillNumber: number) => void;
 }) => {
   return (
     // text-transparent bg-clip-text
@@ -577,7 +588,11 @@ const SkillsSection = ({
         </h2>
         <div className="mt-2 space-y-4">
           {skills.map((skill, index) => (
-            <div className="w-64" key={index}>
+            <div
+              className="w-64"
+              key={index}
+              onClick={() => selectSkill(index)}
+            >
               <motion.h3
                 className="text-xs sm:text-base font-bold text-gray-300"
                 initial={{
