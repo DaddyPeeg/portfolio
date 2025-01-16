@@ -57,12 +57,12 @@ export const projects = [
     },
   },
   {
-    title: "Healthcare Insurance Inquiry Chatbot",
+    title: "Healthcare SaaS",
     topic: "Next Js",
     img: "images/chatbot.png",
     des: "Meet our Healthcare Insurance Inquiry Chatbot—a smart, efficient way to get answers to all your insurance-related questions.",
     detail: {
-      title: "Healthcare Insurance Inquiry Chatbot",
+      title: "Healthcare SaaS",
       des: "Meet our Healthcare Insurance Inquiry Chatbot—a smart, efficient way to get answers to all your insurance-related questions. From coverage details to policy options, our chatbot is here 24/7 to provide clear, personalized assistance, ensuring you make informed decisions about your healthcare coverage.",
       tech: [
         <FaNode />,
@@ -127,12 +127,12 @@ export const projects = [
     },
   },
   {
-    title: "Zwift Tech",
+    title: "Zwift Tapup",
     topic: "Next Js",
     img: "images/zwifttech.jpg",
     des: "Welcome to Zwift Tech, where creating your personalized ID card is fast, easy, and professional. ",
     detail: {
-      title: "Zwift Tech",
+      title: "Zwift Tapup",
       des: "Customize your details, choose from sleek templates, and preview your card instantly. Perfect for businesses, schools, events, and more—IDCardMaker helps you make an impression with every ID. Create your identity today, hassle-free.",
       tech: [
         <FaNode />,

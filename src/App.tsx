@@ -9,8 +9,9 @@ import { MotionConfig } from "framer-motion";
 import { framerMotionConfig } from "./framerConfig";
 import Navbar from "./components/Navbar";
 import { Landing } from "./components/Landing";
-import { Cursor } from "./components/Cursor";
+// import { Cursor } from "./components/Cursor";
 import useMediaQuery from "./utils/useMediaQuery";
+import { NavbarDemo } from "./components/FloatingNavbar";
 
 function App() {
   const [start, setStart] = useState(false);
@@ -62,6 +63,7 @@ function App() {
           ...framerMotionConfig,
         }}
       >
+        {/* <NavbarDemo /> */}
         <Navbar
           setSection={setSection}
           isMenuOpen={isMenuOpen}
@@ -93,7 +95,7 @@ function App() {
           </Suspense>
         </Canvas>
         <LoadingScreen started={start} onStarted={() => setStart(true)} />
-        {!isMobile && <Cursor />}
+        {/* {!isMobile && <Cursor />} */}
       </MotionConfig>
     </section>
   );

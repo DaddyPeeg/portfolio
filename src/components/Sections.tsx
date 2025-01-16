@@ -15,6 +15,8 @@ import UpdatedLogo from "./UpdatedLogo";
 import anime from "animejs";
 import useMediaQuery from "../utils/useMediaQuery";
 import NewSlider from "./NewSlider";
+// import { BentoGridDemo } from "./BentoSample";
+// import MousePressScrollArea from "./MousePressScrollArea";
 
 const Section = ({
   children,
@@ -201,6 +203,12 @@ const ProjectSection = ({
       setSection={setSection}
       className="!p-0 !overflow-visible"
     >
+      {/* <div className="w-full customShape isolate relative h-full place-content-center">
+        <MousePressScrollArea className="h-[calc(100%-12rem)] overflow-auto w-full ">
+          <BentoGridDemo />
+        </MousePressScrollArea>
+      </div> */}
+
       <NewSlider />
     </Section>
   );
@@ -351,7 +359,7 @@ const AboutSection = ({
                   : "sm:text-4xl text-xl text-gray-300"
               } ${
                 wIndex === 1 &&
-                "bg-purple-900 bg-gradient rounded-xl my-4 p-4 lg:p-5 flex-grow-0"
+                "bg-gradient rounded-xl my-4 p-4 lg:p-5 flex-grow-0"
               }  `}
               key={wIndex}
             >

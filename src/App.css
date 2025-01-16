@@ -624,7 +624,7 @@ body {
 
 .carousel {
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
 }
 
@@ -891,8 +891,20 @@ body {
   transition: right 0.5s, top 0.5s, filter 0.5s;
 }
 .carousel.showDetail .list .item:nth-child(2) img {
-  @apply top-[35%] blur-sm brightness-50 sm:blur-0 sm:brightness-100 right-[10%] sm:top-[65%] sm:right-[50%];
+  @apply top-[35%] blur brightness-50 right-[10%] sm:top-[65%] sm:right-[50%];
+
+  /* mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  -webkit-mask-image: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0)
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  mask-composite: intersect;
+  -webkit-mask-composite: destination-in; */
 }
+
 .carousel.showDetail .list .item:nth-child(2) .detail {
   opacity: 1;
   pointer-events: auto;
@@ -987,11 +999,28 @@ body {
   background: rgb(213, 17, 238);
   background: linear-gradient(
     90deg,
-    rgba(213, 17, 238, 0.5466561624649859) 0%,
+    rgba(212, 17, 238, 1) 0%,
     rgba(0, 91, 255, 1) 100%
   );
   transform: translate(0, -50%);
   filter: blur(80px);
   position: absolute;
   border-radius: 30% 70% 29% 71% / 43% 33% 67% 57%;
+  z-index: -1;
+  opacity: 0.4;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.drag-container {
+  overflow: auto;
+  cursor: grab;
+  touch-action: none;
 }

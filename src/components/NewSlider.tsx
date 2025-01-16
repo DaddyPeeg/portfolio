@@ -96,7 +96,11 @@ const NewSlider = () => {
         <div ref={carouselList} className="list">
           {projects.map((project, index) => (
             <div key={index} className="item">
-              <img src={project.img} alt={`imageProject-${index}`} />
+              <img
+                src={project.img}
+                className="mainImage transition-all"
+                alt={`imageProject-${index}`}
+              />
               <div className="intro max-w-md py-8 px-8">
                 <div className="title text-2xl xl:text-4xl text-center sm:text-left font-semibold">
                   {project.title}
@@ -145,6 +149,7 @@ const NewSlider = () => {
           <button id="prev" ref={prevButton} onClick={handlePrevSlide}>
             <RiArrowLeftSLine />
           </button>
+
           <button id="next" ref={nextButton} onClick={handleNextSlide}>
             <RiArrowRightSLine />
           </button>
