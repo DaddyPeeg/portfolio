@@ -4,21 +4,13 @@ import fragmentShader from "./shaders/fragment.glsl";
 import { useEffect, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
+import { gsap } from "gsap";
 
-export interface Props {
-  frequency?: number;
-  primaryColor?: THREE.Color;
-  secondaryColor?: THREE.Color;
-}
-export default function Bubble({
-  frequency,
-  primaryColor,
-  secondaryColor,
-}: Props) {
+export default function Bubble({ selectedSkill }: { selectedSkill: number }) {
   const { frequencyS, primaryColorS, secondaryColorS } = useControls({
     frequencyS: 2,
     primaryColorS: "#04000c",
-    secondaryColorS: "#3f0000",
+    secondaryColorS: "#000000",
   });
 
   const [mouse, setMouse] = useState<THREE.Vector2>(new THREE.Vector2(0, 0));
@@ -32,7 +24,26 @@ export default function Bubble({
     uPrimaryColor: { value: primaryColorSThree },
     uSecondaryColor: { value: secondaryColorSThree },
     uMouse: { value: mouse },
+    uSkillNumber: { value: 0 },
+    uNoiseNumber: { value: 0 },
   });
+
+  useEffect(() => {
+    gsap.to(uniforms.current.uSkillNumber, {
+      value: 0,
+      duration: 0.5,
+      ease: "power2.inOut",
+      onComplete: () => {
+        uniforms.current.uNoiseNumber.value = selectedSkill;
+        gsap.to(uniforms.current.uSkillNumber, {
+          value: selectedSkill,
+          duration: 1,
+          ease: "power2.inOut",
+        });
+      },
+    });
+  }, [selectedSkill]);
+
   function onMouseMove(event: any) {
     let x = (event.clientX / window.innerWidth) * 2 - 1;
     let y = (event.clientY / window.innerHeight) * 2 - 1;
@@ -64,7 +75,6 @@ export default function Bubble({
         ref={shaderRef}
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
-        // side={THREE.BackSide}
         transparent
         uniforms={uniforms.current}
         toneMapped={false}

@@ -12,6 +12,7 @@ import { Landing } from "./components/Landing";
 // import { Cursor } from "./components/Cursor";
 import useMediaQuery from "./utils/useMediaQuery";
 import { NavbarDemo } from "./components/FloatingNavbar";
+import { SkillProvider, useSkill } from "./context/SkillContext";
 
 function App() {
   const [start, setStart] = useState(false);
@@ -43,6 +44,8 @@ function App() {
     setIsMenuOpen(false);
   }, [section]);
   const isMobile = useMediaQuery("(max-width:600px)");
+  const { selectSkill, selectedSkill } = useSkill();
+
   return (
     <section className="w-full h-screen relative" ref={main}>
       <div
@@ -82,13 +85,14 @@ function App() {
             <ScrollControls pages={4} damping={0.1}>
               <ScrollManager section={section} onSectionChange={setSection} />
               <Scroll>
-                <Landing section={section} />
+                <Landing selectedSkill={selectedSkill} section={section} />
               </Scroll>
               <Scroll html>
                 <Interface
                   started={start}
                   setSection={setSection}
                   section={section}
+                  selectSkill={selectSkill}
                 />
               </Scroll>
             </ScrollControls>
