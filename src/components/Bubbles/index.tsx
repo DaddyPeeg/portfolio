@@ -10,7 +10,7 @@ export default function Bubble({ selectedSkill }: { selectedSkill: number }) {
   const { frequencyS, primaryColorS, secondaryColorS } = useControls({
     frequencyS: 2,
     primaryColorS: "#04000c",
-    secondaryColorS: "#000000",
+    secondaryColorS: "#100000",
   });
 
   const [mouse, setMouse] = useState<THREE.Vector2>(new THREE.Vector2(0, 0));
@@ -32,13 +32,13 @@ export default function Bubble({ selectedSkill }: { selectedSkill: number }) {
     gsap.to(uniforms.current.uSkillNumber, {
       value: 0,
       duration: 0.5,
-      ease: "power2.inOut",
+      ease: "power1.inOut",
       onComplete: () => {
         uniforms.current.uNoiseNumber.value = selectedSkill;
         gsap.to(uniforms.current.uSkillNumber, {
           value: selectedSkill,
-          duration: 1,
-          ease: "power2.inOut",
+          duration: 1.5,
+          ease: "power4.inOut",
         });
       },
     });

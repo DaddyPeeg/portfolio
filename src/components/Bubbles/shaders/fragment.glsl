@@ -24,7 +24,7 @@ void main() {
 
   vec3 diffuse = dp * lightColor;
 
-  light += diffuse;
+  light += diffuse * 1.2;
 
   //Specular
   vec3 specular = vec3(0.0);
@@ -33,13 +33,13 @@ void main() {
   float phong = max(0.0, dot(viewDir, r));
   phong = pow(phong, 8.0);
 
-  specular +=phong;
+  specular += phong * 0.8;
 
   //Fresnel
   float fresnel = 1.0 - max(0.0, dot(viewDir, normal));
   fresnel = pow(fresnel,2.0);
 
-  specular *=fresnel;
+  specular *= fresnel * 1.;
   
   color = color * light + specular;
    gl_FragColor = vec4(color, 1.0);

@@ -309,7 +309,8 @@ float fit(float unscaled, float originalMin, float originalMax, float minAllowed
 }
 
 float wave(vec3 position) {
-  return fit(smoothMod(position.y * 6.0, 1.0, 2.5), 0.35, 0.6, 0.0, 1.0);
+  return fit(smoothMod(position.y * 6.0, 0.7, 2.5), 0.35, 0.6, 0.0, 1.5);
+  // return fit(smoothMod(position.y * 6.0, 0.7, 2.5), 0.35, 0.6, 0.0, 1.0);
 }
 
 void main() {
@@ -321,7 +322,7 @@ void main() {
     displacement = snoise(vec3(normal * uSkillNumber + uTime)) * 0.676666;
   }
   else {
-    displacement = wave(vec3(cnoise2(vec3(normal * (uSkillNumber * 0.5) + uTime)))) * 0.6766666;
+    displacement = wave(vec3(cnoise2(vec3(normal * (uSkillNumber * 0.5) + uTime)))) * 0.8;
   }
 
   vec4 modelPostion = modelMatrix * vec4(position,1.0);
