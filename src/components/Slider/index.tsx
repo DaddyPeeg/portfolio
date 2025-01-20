@@ -4,7 +4,7 @@ import { ArrayCategorized } from "../Sections";
 import gsap from "gsap";
 import { TextSpanNew } from "../TextSpan";
 import { FaAngleLeft, FaAngleRight, FaGithub } from "react-icons/fa";
-import useMediaQuery from "../../utils/useMediaQuery";
+import useMediaQuery from "../../hooks/useMediaQuery";
 import lottie from "lottie-web";
 import { Project } from "../../projects";
 const SliderMain = ({

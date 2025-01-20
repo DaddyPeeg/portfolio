@@ -9,8 +9,8 @@ import { gsap } from "gsap";
 export default function Bubble({ selectedSkill }: { selectedSkill: number }) {
   const { frequencyS, primaryColorS, secondaryColorS } = useControls({
     frequencyS: 2,
-    primaryColorS: "#04000c",
-    secondaryColorS: "#100000",
+    primaryColorS: "#00010c",
+    secondaryColorS: "#470032",
   });
 
   const [mouse, setMouse] = useState<THREE.Vector2>(new THREE.Vector2(0, 0));

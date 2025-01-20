@@ -21,9 +21,9 @@
     "noFallthroughCasesInSwitch": true,
 
     /* Path aliasing */
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"],

@@ -18,3 +18,11 @@ export const sceneDefaults = {
   viewScene: { x: 0, y: 1.384999999999994, z: 0 },
   viewCamera: { x: 0, y: 3, z: 3 },
 };
+
+export const framerMotionConfig = {
+  type: "spring",
+  mass: 5,
+  stiffness: 100,
+  damping: 50,
+  restDelta: 0.0001,
+};
