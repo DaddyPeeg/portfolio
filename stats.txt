@@ -1,0 +1,121 @@
+1. Frontend Development
+Programming Languages:
+
+HTML
+CSS (including preprocessors like SASS or LESS)
+JavaScript (ES6+)
+Frameworks/Libraries:
+
+React
+Angular
+Vue.js
+Svelte
+UI/UX Tools:
+
+Bootstrap
+Tailwind CSS
+Material-UI
+Figma (for design handoff and prototyping)
+Others:
+
+Webpack, Vite, or Parcel (module bundlers)
+TypeScript
+2. Backend Development
+Programming Languages:
+
+JavaScript (Node.js)
+Python (Django, Flask)
+Ruby (Ruby on Rails)
+PHP (Laravel)
+Java (Spring Boot)
+C# (.NET)
+Go
+Rust
+Frameworks/Technologies:
+
+Express.js (for Node.js)
+NestJS
+Koa.js
+FastAPI
+GraphQL
+Others:
+
+REST API development
+Authentication (OAuth, JWT, etc.)
+3. Database Management
+Relational Databases (SQL):
+
+MySQL
+PostgreSQL
+SQLite
+Microsoft SQL Server
+NoSQL Databases:
+
+MongoDB
+Cassandra
+Firebase Realtime Database
+CouchDB
+Tools/Technologies:
+
+Redis (in-memory database)
+Prisma (ORM for JavaScript/TypeScript)
+Sequelize, TypeORM, or Knex.js
+Database design tools like MySQL Workbench
+4. DevOps/Deployment
+Cloud Platforms:
+
+AWS (S3, EC2, Lambda, etc.)
+Google Cloud Platform (GCP)
+Microsoft Azure
+CI/CD Tools:
+
+Jenkins
+GitHub Actions
+GitLab CI
+CircleCI
+Containerization & Orchestration:
+
+Docker
+Kubernetes
+Others:
+
+Nginx or Apache (web servers)
+Terraform (infrastructure as code)
+Ansible
+5. Version Control & Collaboration
+Version Control Tools:
+
+Git
+GitHub
+GitLab
+Bitbucket
+Collaboration Tools:
+
+Jira
+Trello
+Slack
+Microsoft Teams
+Agile/Methodologies:
+
+Agile
+Scrum
+Kanban
+6. Problem Solving & Algorithms
+Languages for Problem Solving:
+
+Python
+JavaScript
+Java
+C++
+Go
+Algorithm Platforms/Resources:
+
+LeetCode
+HackerRank
+Codewars
+GeeksforGeeks
+Topics to Master:
+
+Data Structures (arrays, linked lists, trees, graphs, etc.)
+Algorithm design (sorting, searching, dynamic programming, etc.)
+Big O Notation (time and space complexity)

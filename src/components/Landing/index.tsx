@@ -10,7 +10,7 @@ import {
 } from "@react-three/fiber";
 import { Effects } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
-import { framerMotionConfig } from "../../framerConfig";
+import { framerMotionConfig } from "@/constants/index";
 import { animate, useMotionValue } from "framer-motion";
 import { Layers } from "three";
 import {
@@ -24,7 +24,7 @@ import { MeshWobbleMaterial } from "drei";
 import Bubble from "../Bubbles";
 import Sphere from "../Sphere";
 import GroupScene from "../Earth/Group";
-import useMediaQuery from "../../utils/useMediaQuery";
+import useMediaQuery from "../../hooks/useMediaQuery";
 import { Gyroscope } from "three/examples/jsm/misc/Gyroscope.js";
 
 extend({ WaterPass, UnrealBloomPass, FilmPass, LUTPass });

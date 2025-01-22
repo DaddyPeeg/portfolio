@@ -2,7 +2,7 @@ import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import { ReactNode, useCallback, useEffect, useRef } from "react";
 import { useState } from "react";
 import { IoMdDownload } from "react-icons/io";
-import useMouseNearCorner from "../utils/nearScreen";
+import useMouseNearCorner from "../hooks/useMouseNearScreen";
 import { Project, projects } from "../projects";
 import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
@@ -13,9 +13,10 @@ import {
 import { useScroll } from "@react-three/drei";
 import UpdatedLogo from "./UpdatedLogo";
 import anime from "animejs";
-import useMediaQuery from "../utils/useMediaQuery";
+import useMediaQuery from "../hooks/useMediaQuery";
 import NewSlider from "./NewSlider";
 import { SkillProvider, useSkill } from "@/context/SkillContext";
+import { RadarChartComp } from "./RadarChart";
 // import { BentoGridDemo } from "./BentoSample";
 // import MousePressScrollArea from "./MousePressScrollArea";
 
@@ -536,23 +537,23 @@ export default TextSequence;
 const skills = [
   {
     title: "Threejs / React Three Fiber",
-    level: 70,
-  },
-  {
-    title: "NextJS",
     level: 90,
   },
   {
+    title: "NextJS",
+    level: 100,
+  },
+  {
     title: "Nodejs",
-    level: 95,
+    level: 100,
   },
   {
     title: "Typescript",
-    level: 80,
+    level: 90,
   },
   {
     title: "3D Modeling",
-    level: 30,
+    level: 50,
   },
 ];
 const other = [
@@ -582,11 +583,15 @@ const SkillsSection = ({
   return (
     // text-transparent bg-clip-text
     <Section listNumber={1} section={section} setSection={setSection}>
-      <motion.div className="flex flex-col" whileInView={"visible"}>
-        <h2 className="text-xl sm:text-3xl w-0 hover:w-[13ch] whitespace-nowrap bg-gradient font-bold hover:text-transparent text-white transition-custom bg-clip-text">
-          Technical Skills
-        </h2>
-        <div className="mt-2 space-y-4">
+      <RadarChartComp selectSkill={selectSkill} />
+      {/* <motion.div className="flex flex-col" whileInView={"visible"}>
+        <div
+          className="mt-2 space-y-4 border-white border px-8 py-10 rounded-md bg-white/0
+            backdrop-blur-lg"
+        >
+          <h2 className="text-xl sm:text-3xl w-0 hover:w-[13ch] whitespace-nowrap bg-gradient font-bold hover:text-transparent text-white transition-custom bg-clip-text">
+            Technical Skills
+          </h2>
           {skills.map((skill, index) => (
             <div
               className="w-64"
@@ -632,7 +637,8 @@ const SkillsSection = ({
             </div>
           ))}
         </div>
-        <div className="mt-8">
+
+        <div className="mt-8 border px-8 py-10">
           <h2 className="text-xl sm:text-3xl w-0 hover:w-[13ch] whitespace-nowrap bg-gradient font-bold hover:text-transparent text-white transition-custom bg-clip-text">
             Videography
           </h2>
@@ -679,7 +685,7 @@ const SkillsSection = ({
             ))}
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
     </Section>
   );
 };

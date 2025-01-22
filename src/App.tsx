@@ -6,13 +6,14 @@ import { Scroll, ScrollControls } from "@react-three/drei";
 import { ScrollManager } from "./components/ScrollManager";
 import { Interface } from "./components/Sections";
 import { MotionConfig } from "framer-motion";
-import { framerMotionConfig } from "./framerConfig";
+import { framerMotionConfig } from "@/constants/index";
 import Navbar from "./components/Navbar";
 import { Landing } from "./components/Landing";
 // import { Cursor } from "./components/Cursor";
-import useMediaQuery from "./utils/useMediaQuery";
-import { NavbarDemo } from "./components/FloatingNavbar";
-import { SkillProvider, useSkill } from "./context/SkillContext";
+import useMediaQuery from "./hooks/useMediaQuery";
+import { useSkill } from "./context/SkillContext";
+// import { NavbarDemo } from "./components/FloatingNavbar";
+// import { SkillProvider, useSkill } from "./context/SkillContext";
 
 function App() {
   const [start, setStart] = useState(false);
@@ -43,7 +44,7 @@ function App() {
   useEffect(() => {
     setIsMenuOpen(false);
   }, [section]);
-  const isMobile = useMediaQuery("(max-width:600px)");
+  // const isMobile = useMediaQuery("(max-width:600px)");
   const { selectSkill, selectedSkill } = useSkill();
 
   return (
