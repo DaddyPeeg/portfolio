@@ -223,7 +223,7 @@ export function RadarChartComp({
 
   return (
     <div className="w-full flex flex-col max-w-[32rem] items-center">
-      <div className="w-full max-w-[17rem] aspect-square">
+      <div className="w-full max-w-[17rem] md:max-w-[22rem]">
         <ChartContainer
           config={chartConfig}
           className="mx-auto aspect-square max-h-full"

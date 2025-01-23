@@ -26,8 +26,7 @@ const SkillsSlider = ({ chartData }: Props) => {
         },
       }}
     >
-      {/* h-[26rem] */}
-      <div className="skill_card text-white shrink-0 w-full max-w-[24rem] h-[14rem] p-2">
+      <div className="skill_card text-white shrink-0 w-full max-w-[24rem] h-[14rem] md:h-[26rem] p-2 md:py-[1.5rem] md:px-[1rem]">
         <div className="skill_card__border" />
         <span className="bg-gray-100 z-50 absolute p-1 md:p-2 md:top-3 self-start rounded-full top-1">
           <Icon className="size-5 md:size-8 rounded-full text-black" />
