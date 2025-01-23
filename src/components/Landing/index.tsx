@@ -91,26 +91,26 @@ export const Landing = ({
         <ambientLight intensity={0.01} />
         <pointLight distance={60} intensity={4} color="lightblue" />
         <spotLight
-          intensity={0.7}
+          intensity={1}
           position={[0, 0, -1000]}
           penumbra={1}
           color="red"
         />
         <spotLight
-          intensity={0.7}
+          intensity={1}
           position={[0, 100, -1000]}
           penumbra={1}
           color="blue"
         />
-        <mesh>
+        {/* <mesh>
           <planeGeometry args={[1000, 1000]} />
           <meshStandardMaterial
             color="#ff00ff"
-            roughness={1}
-            depthTest={false}
+            roughness={0}
+            depthTest={true}
           />
-        </mesh>
-        <Swarm count={2000} />
+        </mesh> */}
+        <Swarm count={500} />
         <Postpro />
         <group ref={blobRef} scale={3} position={[4, -23, -50]}>
           <Bubble selectedSkill={selectedSkill} />
@@ -202,8 +202,8 @@ function Swarm({ count, dummy = new THREE.Object3D() }) {
         </mesh>
       </pointLight>
       <instancedMesh ref={mesh} args={[null, null, count]}>
-        <dodecahedronGeometry args={[2.3, 0]} />
-        <meshStandardMaterial color="#020000" roughness={0.36} />
+        <dodecahedronGeometry args={[3, 0]} />
+        <meshStandardMaterial color="#040001" roughness={0.4} />
       </instancedMesh>
     </>
   );

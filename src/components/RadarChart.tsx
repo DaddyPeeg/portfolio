@@ -222,11 +222,11 @@ export function RadarChartComp({
   }, []);
 
   return (
-    <div className="w-full flex flex-col max-w-[32rem] items-center gap-4">
-      <div className="w-full max-w-[20rem]">
+    <div className="w-full flex flex-col max-w-[32rem] items-center">
+      <div className="w-full max-w-[17rem] md:max-w-[22rem]">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square h-full"
+          className="mx-auto aspect-square max-h-full"
         >
           <RadarChart data={chartData} onClick={handleChartClick}>
             <ChartTooltip
@@ -267,8 +267,8 @@ export function RadarChartComp({
                   <Icon
                     {...props}
                     x={props.x - x}
-                    y={props.y - y}
-                    size={28}
+                    y={props.y - y + 5}
+                    size={20}
                     fill="white"
                   />
                 ) : (
@@ -305,8 +305,7 @@ export function RadarChartComp({
           </RadarChart>
         </ChartContainer>
       </div>
-
-      {/* <SkillsSlider chartData={activeData} /> */}
+      <SkillsSlider chartData={activeData} />
     </div>
   );
 }

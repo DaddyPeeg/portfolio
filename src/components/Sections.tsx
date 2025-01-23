@@ -333,22 +333,23 @@ const AboutSection = ({
       clearInterval(interval);
     };
   }, []);
-  const isLeftCorner = useMouseNearCorner("left", 250);
-  const { matches: reduceMotion } = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  );
+  // const isLeftCorner = useMouseNearCorner("left", 250);
+  // const { matches: reduceMotion } = window.matchMedia(
+  //   "(prefers-reduced-motion: reduce)"
+  // );
 
   return (
     <Section listNumber={0} section={section} setSection={setSection}>
-      <motion.div
-        className={`h-full flex flex-col justify-center items-start sm:items-stretch opacity-100 ml-0 sm:hover:opacity-100 sm:hover:ml-0 transition-custom cursor-default pointer-events-auto
-        ${
+      {/* ${
           isComplete && !reduceMotion
             ? isLeftCorner && section == 0
               ? "sm:opacity-100 sm:ml-0 pointer-events-auto"
               : "sm:opacity-0 sm:ml-[-10rem] pointer-events-none"
             : "sm:opacity-100 sm:ml-0 pointer-events-auto"
-        }
+        } */}
+      <motion.div
+        className={`h-full flex flex-col justify-center items-start sm:items-stretch opacity-100 ml-0 sm:hover:opacity-100 sm:hover:ml-0 transition-custom cursor-default pointer-events-auto
+        
         `}
         ref={introRef}
       >
