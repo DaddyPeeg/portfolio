@@ -19,7 +19,7 @@ const ContactForm = ({
   form,
 }: Props) => {
   return (
-    <div className="w-full max-w-md relative overflow-hidden z-10 bg-gray-800/10 border border-gray-800 backdrop-blur-md p-8 rounded-lg shadow-md before:w-24 before:h-24 before:absolute before:bg-purple-600 before:rounded-full before:-z-10 before:blur-2xl after:w-32 after:h-32 after:absolute after:bg-sky-400 after:rounded-full after:-z-10 after:blur-2xl after:top-24 after:-right-12">
+    <div className="w-full max-w-md relative overflow-hidden z-10 bg-gray-800/10 border border-gray-800 backdrop-blur-md p-4 md:p-8 rounded-lg shadow-md before:w-24 before:h-24 before:absolute before:bg-purple-600 before:rounded-full before:-z-10 before:blur-2xl after:w-32 after:h-32 after:absolute after:bg-sky-400 after:rounded-full after:-z-10 after:blur-2xl after:top-24 after:-right-12">
       <h2 className="text-2xl font-bold text-white">Hire Me</h2>
       <p className="text-gray-300 font-thin text-base italic mb-6">
         Let's create something amazing together.
