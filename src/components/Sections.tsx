@@ -2,7 +2,7 @@ import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import { ReactNode, useCallback, useEffect, useRef } from "react";
 import { useState } from "react";
 import { IoMdDownload } from "react-icons/io";
-import useMouseNearCorner from "../hooks/useMouseNearScreen";
+
 import { Project, projects } from "../projects";
 import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
@@ -15,10 +15,15 @@ import UpdatedLogo from "./UpdatedLogo";
 import anime from "animejs";
 import useMediaQuery from "../hooks/useMediaQuery";
 import NewSlider from "./NewSlider";
-import { SkillProvider, useSkill } from "@/context/SkillContext";
 import { RadarChartComp } from "./RadarChart";
-// import { BentoGridDemo } from "./BentoSample";
-// import MousePressScrollArea from "./MousePressScrollArea";
+import ContactForm from "./ContactForm";
+
+/**
+ * Commented Imports in case
+ * import { BentoGridDemo } from "./BentoSample";
+ * import MousePressScrollArea from "./MousePressScrollArea";
+ * import useMouseNearCorner from "../hooks/useMouseNearScreen";
+ */
 
 const Section = ({
   children,
@@ -399,6 +404,7 @@ const AboutSection = ({
           ))}
         </div>
         <TextSequence />
+
         <div className="flex gap-4">
           <motion.button
             className={` border-2 border-indigo-600 text-white px-4 py-2 sm:py-4 sm:px-8 
@@ -443,6 +449,26 @@ const AboutSection = ({
             <IoMdDownload className="text-2xl ml-4" />
           </motion.button>
         </div>
+        <motion.div
+          initial={{
+            opacity: 0,
+            x: 25,
+          }}
+          animate={{
+            opacity: 1,
+            x: 0,
+          }}
+          transition={{
+            duration: 1,
+            delay: 6,
+          }}
+          className="w-full py-2 flex mt-4 animate-pulse bg-black/40 px-2 rounded-md md:hidden"
+        >
+          <p className="text-xs text-white font-light italic">
+            Switch to <b className="font-semibold">Desktop</b> for a more
+            interactive and seamless experience!
+          </p>
+        </motion.div>
       </motion.div>
     </Section>
   );
@@ -535,43 +561,6 @@ const TextSequence = () => {
 
 export default TextSequence;
 
-const skills = [
-  {
-    title: "Threejs / React Three Fiber",
-    level: 90,
-  },
-  {
-    title: "NextJS",
-    level: 100,
-  },
-  {
-    title: "Nodejs",
-    level: 100,
-  },
-  {
-    title: "Typescript",
-    level: 90,
-  },
-  {
-    title: "3D Modeling",
-    level: 50,
-  },
-];
-const other = [
-  {
-    title: "Editing",
-    level: 95,
-  },
-  {
-    title: "Audio Production",
-    level: 80,
-  },
-  {
-    title: "Drone Operation",
-    level: 90,
-  },
-];
-
 const SkillsSection = ({
   section,
   setSection,
@@ -582,113 +571,16 @@ const SkillsSection = ({
   selectSkill: (skillNumber: number) => void;
 }) => {
   return (
-    // text-transparent bg-clip-text
     <Section listNumber={1} section={section} setSection={setSection}>
       <RadarChartComp selectSkill={selectSkill} />
-      {/* <motion.div className="flex flex-col" whileInView={"visible"}>
-        <div
-          className="mt-2 space-y-4 border-white border px-8 py-10 rounded-md bg-white/0
-            backdrop-blur-lg"
-        >
-          <h2 className="text-xl sm:text-3xl w-0 hover:w-[13ch] whitespace-nowrap bg-gradient font-bold hover:text-transparent text-white transition-custom bg-clip-text">
-            Technical Skills
-          </h2>
-          {skills.map((skill, index) => (
-            <div
-              className="w-64"
-              key={index}
-              onClick={() => selectSkill(index)}
-            >
-              <motion.h3
-                className="text-xs sm:text-base font-bold text-gray-300"
-                initial={{
-                  opacity: 0,
-                }}
-                variants={{
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      duration: 1,
-                      delay: 1 + index * 0.2,
-                    },
-                  },
-                }}
-              >
-                {skill.title}
-              </motion.h3>
-              <div className="h-2 hover:glow transition-custom w-full bg-gray-200 rounded-full mt-2">
-                <motion.div
-                  className="h-full bg-gradient rounded-full "
-                  style={{ width: `${skill.level}%` }}
-                  initial={{
-                    scaleX: 0,
-                    originX: 0,
-                  }}
-                  variants={{
-                    visible: {
-                      scaleX: 1,
-                      transition: {
-                        duration: 1,
-                        delay: 1 + index * 0.2,
-                      },
-                    },
-                  }}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-8 border px-8 py-10">
-          <h2 className="text-xl sm:text-3xl w-0 hover:w-[13ch] whitespace-nowrap bg-gradient font-bold hover:text-transparent text-white transition-custom bg-clip-text">
-            Videography
-          </h2>
-          <div className="mt-2 space-y-4">
-            {other.map((lng, index) => (
-              <div className="w-64" key={index}>
-                <motion.h3
-                  className="text-xs sm:text-base font-bold text-gray-300"
-                  initial={{
-                    opacity: 0,
-                  }}
-                  variants={{
-                    visible: {
-                      opacity: 1,
-                      transition: {
-                        duration: 1,
-                        delay: 2 + index * 0.2,
-                      },
-                    },
-                  }}
-                >
-                  {lng.title}
-                </motion.h3>
-                <div className="h-2 w-full hover:glow transition-custom bg-gray-200 rounded-full mt-2">
-                  <motion.div
-                    className="h-full bg-gradient rounded-full "
-                    style={{ width: `${lng.level}%` }}
-                    initial={{
-                      scaleX: 0,
-                      originX: 0,
-                    }}
-                    variants={{
-                      visible: {
-                        scaleX: 1,
-                        transition: {
-                          duration: 1,
-                          delay: 2 + index * 0.2,
-                        },
-                      },
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.div> */}
     </Section>
   );
+};
+
+export type FormType = {
+  name: string;
+  email: string;
+  message: string;
 };
 
 const ContactSection = ({
@@ -698,7 +590,11 @@ const ContactSection = ({
   section: number;
   setSection: (section: number) => void;
 }) => {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState<FormType>({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (
@@ -753,62 +649,12 @@ const ContactSection = ({
       section={section}
       setSection={setSection}
     >
-      <h2 className="text-xl sm:text-3xl w-0 hover:w-[13ch] whitespace-nowrap bg-gradient font-bold hover:text-transparent text-white transition-custom bg-clip-text">
-        Contact Me
-      </h2>
-      <div className="md:w-96 rounded-md bg-gradient p-1 mt-4 relative before:absolute before:w-full before:h-full before:-z-10 before:bg-gradient before:left-0 before:top-0 before:blur-[40px]">
-        <div className="p-8 rounded-md w-full max-w-full bg-white">
-          <form onSubmit={handleSubmit}>
-            <label
-              htmlFor="name"
-              className="font-medium text-gray-900 block mb-1 text-sm md:text-base"
-            >
-              Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={form.name}
-              className="block w-full rounded-md border-0 text-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 px-3 md:py-3 py-2 text-sm md:text-base disabled:text-gray-500"
-              onChange={handleChange}
-              disabled={isLoading}
-            />
-            <label
-              htmlFor="email"
-              className="font-medium text-gray-900 block mb-1 md:mt-8 mt-2 text-sm md:text-base"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={form.email}
-              className="block w-full rounded-md border-0 text-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 px-3 md:py-3 py-2 text-sm md:text-base disabled:text-gray-500"
-              onChange={handleChange}
-              disabled={isLoading}
-            />
-            <label
-              htmlFor="email"
-              className="font-medium text-gray-900 block mb-1 md:mt-8 mt-2 text-sm md:text-base"
-            >
-              Message
-            </label>
-            <textarea
-              name="message"
-              id="message"
-              value={form.message}
-              className="h-32 block w-full rounded-md border-0 text-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 p-3 text-sm md:text-base resize-none disabled:text-gray-500"
-              onChange={handleChange}
-              disabled={isLoading}
-            />
-            <button className="bg-indigo-600 text-white md:py-4 md:px-8 py-2 px-4 rounded-lg font-bold text-sm md:text-lg md:mt-16 mt-4 ">
-              Submit
-            </button>
-          </form>
-        </div>
-      </div>
+      <ContactForm
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        isLoading={isLoading}
+        form={form}
+      />
     </Section>
   );
 };

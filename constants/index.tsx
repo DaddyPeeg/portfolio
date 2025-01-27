@@ -19,7 +19,7 @@ export const projects = [
     des: "Discover the next evolution in music streaming. Your all-in-one destination for endless tunes and immersive audio. ",
     detail: {
       title: "Spotify Clone",
-      des: "Whether you're a casual listener or a music aficionado, HarmonySound is designed to elevate your listening experience. Join millions of music lovers worldwide and discover why HarmonySound is the ultimate destination for music exploration and enjoyment.",
+      des: "A fully responsive Spotify-inspired music streaming application built to showcase my front-end development skills. This project features a sleek user interface, music playback functionality, playlist creation, and a dynamic search system. It demonstrates proficiency in modern web technologies, including React, Tailwind CSS, and API integration.",
       tech: [
         <RiSupabaseFill />,
         <SiNextdotjs />,
@@ -38,10 +38,10 @@ export const projects = [
     title: "AnimeHub",
     topic: "React",
     img: "images/anime.png",
-    des: "Explore, rate, and review your favorite anime series and movies with AnimeHub. ",
+    des: "A sleek web platform for anime fans to explore, search, and discover shows. Built with React, Tailwind CSS, and API integration, showcasing my skills in modern web development.",
     detail: {
       title: "AnimeHub",
-      des: "Whether you're a seasoned otaku or just beginning your anime journey, discover the best titles and share your thoughts with the community. Dive into a world of ratings, recommendations, and spirited discussions on AnimeRatings—where every anime fan finds their voice.",
+      des: "A dynamic web platform designed for anime enthusiasts to explore, search, and discover their favorite shows. This project features an intuitive UI with categorized anime listings, detailed show information, and a responsive design. Built using React, Tailwind CSS, and third-party API integration, it highlights my skills in building engaging and user-friendly applications.",
       tech: [
         <FaNode />,
         <SiNextdotjs />,
@@ -60,10 +60,10 @@ export const projects = [
     title: "Healthcare SaaS",
     topic: "Next Js",
     img: "images/chatbot.png",
-    des: "Meet our Healthcare Insurance Inquiry Chatbot—a smart, efficient way to get answers to all your insurance-related questions.",
+    des: "An AI-powered chatbot designed to assist users with healthcare insurance queries. Built with natural language processing and responsive design, it streamlines information retrieval and enhances user experience.",
     detail: {
       title: "Healthcare SaaS",
-      des: "Meet our Healthcare Insurance Inquiry Chatbot—a smart, efficient way to get answers to all your insurance-related questions. From coverage details to policy options, our chatbot is here 24/7 to provide clear, personalized assistance, ensuring you make informed decisions about your healthcare coverage.",
+      des: "A smart virtual assistant designed to make navigating healthcare insurance effortless. Equipped with AI-driven natural language processing, it provides instant answers, personalized plan suggestions, and real-time support through an intuitive and user-friendly interface.",
       tech: [
         <FaNode />,
         <SiNextdotjs />,
@@ -87,7 +87,7 @@ export const projects = [
     des: "At Codebility, we specialize in transforming your ideas into robust digital solutions.",
     detail: {
       title: "Codebility",
-      des: "Whether you need a sleek website, cutting-edge mobile app, or customized software, our expert team delivers tailored technology solutions that drive your business forward. With a passion for innovation and a commitment to excellence, TechCraft Solutions is your trusted partner in navigating the digital landscape.",
+      des: "Whether you need a sleek website, cutting-edge mobile app, or customized software, our expert team delivers tailored technology solutions that drive your business forward. With a passion for innovation and a commitment to excellence, Codebility is your trusted partner in navigating the digital landscape.",
       tech: [
         <FaNode />,
         <SiNextdotjs />,
@@ -107,10 +107,10 @@ export const projects = [
     title: "Task Management App",
     topic: "Next Js",
     img: "images/taskify.png",
-    des: "This app is your ultimate tool for visual project management.",
+    des: "A sleek Kanban-style app for organizing tasks with drag-and-drop boards, progress tracking, and a modern UI. Built with React and Tailwind CSS.",
     detail: {
       title: "Task Management App",
-      des: "Organize tasks, collaborate seamlessly, and track progress effortlessly with our intuitive Kanban board. Whether you're a team of one or many, achieve peak productivity and clarity in your projects with SwiftKanban. Start visualizing your workflow today and experience the power of streamlined project management.",
+      des: "A modern task management application inspired by the Kanban methodology, designed to streamline workflow and boost productivity. Featuring intuitive drag-and-drop functionality, customizable boards, and progress tracking, it provides an efficient way to organize tasks. Built with React, Tailwind CSS, and state management tools for a seamless user experience.",
       tech: [
         <FaNode />,
         <SiNextdotjs />,
@@ -130,10 +130,10 @@ export const projects = [
     title: "Zwift Tapup",
     topic: "Next Js",
     img: "images/zwifttech.jpg",
-    des: "Welcome to Zwift Tech, where creating your personalized ID card is fast, easy, and professional. ",
+    des: "A unique portfolio creation platform built with Next.js and Firebase, where users can design, edit, and manage portfolio cards. Each card represents a personal collection that can be bought, sold, and traded, creating a dynamic marketplace experience.",
     detail: {
       title: "Zwift Tapup",
-      des: "Customize your details, choose from sleek templates, and preview your card instantly. Perfect for businesses, schools, events, and more—IDCardMaker helps you make an impression with every ID. Create your identity today, hassle-free.",
+      des: "Zwift Tapup is an innovative platform that allows users to create, customize, and manage portfolio cards, with each card representing a unique personal collection. Built with Next.js and Firebase, the app provides a seamless and interactive experience for users to design their portfolios with ease. The platform features a marketplace where users can buy, sell, and trade portfolio cards, adding a dynamic layer to portfolio management. It combines modern web technologies to offer a fluid and engaging experience for portfolio enthusiasts and traders alike.",
       tech: [
         <FaNode />,
         <SiNextdotjs />,
