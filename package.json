@@ -1,5 +1,6 @@
 {
   "name": "portfolio-final",
+  "homepage": "https://daddypeeg.github.io/portfolio/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +9,9 @@
     "build": "vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview --host",
-    "serve": "vite --host"
+    "serve": "vite --host",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emailjs/browser": "^4.1.0",
@@ -25,6 +28,7 @@
     "drei": "^2.2.21",
     "framer-motion": "^10.18.0",
     "framer-motion-3d": "^10.18.0",
+    "gh-pages": "^6.3.0",
     "greensock": "^1.20.2",
     "gsap": "^3.12.4",
     "imagesloaded": "^5.0.0",
