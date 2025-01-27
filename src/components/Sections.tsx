@@ -119,7 +119,6 @@ const Section = ({
 
 export const Interface = ({
   section,
-  started,
   setSection,
   selectSkill,
 }: {
@@ -128,22 +127,20 @@ export const Interface = ({
   setSection: (section: number) => void;
   selectSkill: (skillNumber: number) => void;
 }) => {
-  if (started)
-    return (
-      // <SkillProvider>
-      <div className="flex flex-col items-center w-screen">
-        <AboutSection section={section} setSection={setSection} />
-        <SkillsSection
-          selectSkill={selectSkill}
-          section={section}
-          setSection={setSection}
-        />
-        <ProjectSection section={section} setSection={setSection} />
-        <ContactSection section={section} setSection={setSection} />
-      </div>
-      // </SkillProvider>
-    );
-  return <></>;
+  return (
+    // <SkillProvider>
+    <div className="flex flex-col items-center w-screen">
+      <AboutSection section={section} setSection={setSection} />
+      <SkillsSection
+        selectSkill={selectSkill}
+        section={section}
+        setSection={setSection}
+      />
+      <ProjectSection section={section} setSection={setSection} />
+      <ContactSection section={section} setSection={setSection} />
+    </div>
+    // </SkillProvider>
+  );
 };
 
 type Page = {

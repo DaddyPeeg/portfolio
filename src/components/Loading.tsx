@@ -1,6 +1,7 @@
 import { useProgress } from "@react-three/drei";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export const LoadingScreen = ({
   started,
@@ -10,17 +11,22 @@ export const LoadingScreen = ({
   onStarted: () => void;
 }) => {
   const [start, setStart] = useState(false);
+  const { progress } = useProgress();
   useEffect(() => {
+    if (progress !== 100) return;
     const time = setTimeout(() => {
       if (!start) setStart(true);
-    }, 5000);
+    }, 2000);
     return () => {
       clearTimeout(time);
     };
-  }, []);
-  const { progress } = useProgress();
+  }, [progress]);
   return (
-    <div className={`loadingScreen ${started ? "loadingScreen--started" : ""}`}>
+    <div
+      className={cn("loadingScreen", {
+        "loadingScreen--started": started,
+      })}
+    >
       <div className="loadingScreen__progress">
         <div
           className="loadingScreen__progress__value transition-all"
@@ -36,14 +42,14 @@ export const LoadingScreen = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className={`loadingScreen__button ${
-                started &&
-                "after:bg-transparent after:border-2 after:border-black text-black"
-              }`}
+              className={cn("loadingScreen__button", {
+                "after:bg-transparent after:border-2 after:border-black text-black":
+                  started,
+              })}
               onClick={onStarted}
               key={0}
             >
-              Start
+              Explore
             </motion.button>
           ) : (
             <motion.div
