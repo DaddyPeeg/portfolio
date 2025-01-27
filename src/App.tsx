@@ -34,10 +34,11 @@ function App() {
     if (!main.current) return;
     (main.current as Element).children[2].addEventListener("click", click);
     return () => {
-      (main.current! as Element).children[2].removeEventListener(
-        "click",
-        click
-      );
+      if (main.current)
+        (main.current! as Element).children[2].removeEventListener(
+          "click",
+          click
+        );
     };
   }, [main.current]);
 
@@ -50,7 +51,7 @@ function App() {
   return (
     <section className="w-full h-screen relative" ref={main}>
       <div
-        className={`fixed bottom-4 left-4 h-8 w-8 items-center justify-center text-xs bg-black rounded-full z-10 ${
+        className={`fixed bottom-4 left-4 h-8 w-8 items-center justify-center text-xs bg-black rounded-full z-10 text-white font-bold ${
           !isProduction ? "flex" : "hidden"
         }`}
       >
@@ -61,6 +62,7 @@ function App() {
         <span className="hidden xl:block 2xl:hidden">xl</span>
         <span className="hidden 2xl:block">xl+</span>
       </div>
+
       <Leva hidden />
       <MotionConfig
         transition={{
