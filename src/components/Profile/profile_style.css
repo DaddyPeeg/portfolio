@@ -1,0 +1,42 @@
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+:root {
+  --profile-clr-1: #052b2f;
+  --profile-clr-2: #073438;
+  --profile-clr-3: #0e4b5000;
+  --profile-clr-4: #326ff4d9;
+  --profile-clr-5: #637c5400;
+}
+
+.profile_containment {
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--profile-clr-3),
+    #ff0efb7e,
+    var(--profile-clr-4),
+    #ff0efb7e,
+    var(--profile-clr-5),
+    var(--profile-clr-5),
+    var(--profile-clr-5),
+    #ff0efb7e,
+    var(--profile-clr-4),
+    #ff0efb7e,
+    var(--profile-clr-5),
+    var(--profile-clr-5),
+    var(--profile-clr-5)
+  );
+  animation: rotation_angle 10s linear infinite;
+}
+
+@keyframes rotation_angle {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}

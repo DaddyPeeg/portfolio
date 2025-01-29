@@ -1,7 +1,7 @@
 import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import { ReactNode, useCallback, useEffect, useRef } from "react";
 import { useState } from "react";
-import { IoMdDownload } from "react-icons/io";
+// import { IoMdDownload } from "react-icons/io";
 
 import { Project, projects } from "../projects";
 import emailjs from "@emailjs/browser";
@@ -17,6 +17,7 @@ import useMediaQuery from "../hooks/useMediaQuery";
 import NewSlider from "./NewSlider";
 import { RadarChartComp } from "./RadarChart";
 import ContactForm from "./ContactForm";
+import { NavigateFunction, useNavigate } from "react-router";
 
 /**
  * Commented Imports in case
@@ -121,16 +122,22 @@ export const Interface = ({
   section,
   setSection,
   selectSkill,
+  navigateTo,
 }: {
   section: number;
   started?: boolean;
   setSection: (section: number) => void;
   selectSkill: (skillNumber: number) => void;
+  navigateTo: NavigateFunction;
 }) => {
   return (
     // <SkillProvider>
     <div className="flex flex-col items-center w-screen">
-      <AboutSection section={section} setSection={setSection} />
+      <AboutSection
+        navigateTo={navigateTo}
+        section={section}
+        setSection={setSection}
+      />
       <SkillsSection
         selectSkill={selectSkill}
         section={section}
@@ -234,9 +241,11 @@ let outlineY = 0;
 const AboutSection = ({
   section,
   setSection,
+  navigateTo,
 }: {
   setSection: (section: number) => void;
   section: number;
+  navigateTo: NavigateFunction;
 }) => {
   const [isComplete, setIsComplete] = useState(false);
   const introRef = useRef(null);
@@ -405,7 +414,7 @@ const AboutSection = ({
         <div className="flex gap-4">
           <motion.button
             className={` border-2 border-indigo-600 text-white px-4 py-2 sm:py-4 sm:px-8 
-      rounded-lg font-bold text-xs sm:text-lg mt-16 md:mt-28`}
+      rounded-lg font-bold text-xs sm:text-lg mt-16 md:mt-28 w-full max-w-48`}
             onClick={() => setSection(3)}
             initial={{
               pointerEvents: "none",
@@ -424,9 +433,10 @@ const AboutSection = ({
           >
             Contact me
           </motion.button>
+
           <motion.button
             className={`border-2 border-[#e9499d] text-white px-4 py-2 sm:py-4 sm:px-8 
-      rounded-lg font-bold text-xs sm:text-lg mt-16 md:mt-28 flex justify-between items-center`}
+      rounded-lg font-bold text-xs sm:text-lg mt-16 md:mt-28 flex justify-center items-center w-full max-w-48`}
             initial={{
               pointerEvents: "none",
               opacity: 0,
@@ -441,9 +451,10 @@ const AboutSection = ({
               duration: 1,
               delay: 5,
             }}
+            onClick={() => navigateTo("/portfolio/resume")}
           >
             Resume
-            <IoMdDownload className="text-2xl ml-4" />
+            {/* <IoMdDownload className="text-2xl ml-4" /> */}
           </motion.button>
         </div>
         <motion.div

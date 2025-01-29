@@ -1,4 +1,64 @@
+import { useEffect } from "react";
+import anime from "animejs";
+
 const LogoCam = ({ className }: { className?: string }) => {
+  const animateIn = async () => {
+    anime({
+      targets: "#vectorLetter path",
+      strokeDashoffset: [anime.setDashoffset, 0],
+      fill: (el: any, i: number) => {
+        return i === 0 ? "#001C32" : "#CADCE0";
+      },
+      easing: "linear",
+      delay(el: any, i: number) {
+        return i * 500;
+      },
+      duration: 1000,
+      loop: true,
+      endDelay: 5000,
+    });
+    anime({
+      targets: "#camBtn1",
+      fill: "#fff",
+      easing: "linear",
+      delay: 3000,
+      duration: 1000,
+      loop: true,
+      endDelay: 4500,
+    });
+    anime({
+      targets: "#camBtn2",
+      fill: "#fff",
+      easing: "linear",
+      delay: 3500,
+      duration: 1000,
+      loop: true,
+      endDelay: 4000,
+    });
+    anime({
+      targets: "#lensCircs",
+      keyframes: [
+        { delay: 2000, translateX: 30 },
+        { translateY: 30, translateX: 20 },
+        { translateY: -30, translateX: 20 },
+        { translateY: 25, translateX: -15 },
+        { translateY: 20, translateX: 0 },
+        { translateY: 0, translateX: -25 },
+        { translateY: 20, translateX: 20 },
+        { translateY: -20, translateX: -20 },
+        { translateY: 0, translateX: 0 },
+      ],
+      elasticity: 200,
+      duration: 2000,
+      loop: true,
+      endDelay: 4500,
+      easing: "easeOutElastic",
+    });
+  };
+
+  useEffect(() => {
+    animateIn();
+  }, []);
   return (
     <svg
       className={className}
