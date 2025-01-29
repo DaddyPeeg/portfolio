@@ -56,7 +56,7 @@ const Profile = () => {
           blur={5}
           waveOpacity={50}
         />
-        <div className="profile_containment rounded-full z-50 overflow-hidden size-32 md:size-64 mt-24 flex items-center justify-center">
+        <div className="profile_containment rounded-full z-50 overflow-hidden size-32 md:size-64 mt-24 flex items-center justify-center relative">
           <ImageLoader
             pic={"profile/pp.jpg"}
             className="rounded-full"

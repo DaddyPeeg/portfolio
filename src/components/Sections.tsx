@@ -411,7 +411,7 @@ const AboutSection = ({
         </div>
         <TextSequence />
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 shrink-0 min-w-64">
           <motion.button
             className={` border-2 border-indigo-600 text-white px-4 py-2 sm:py-4 sm:px-8 
       rounded-lg font-bold text-xs sm:text-lg mt-16 md:mt-28 w-full max-w-48`}
