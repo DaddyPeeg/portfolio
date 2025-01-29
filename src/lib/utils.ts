@@ -71,3 +71,25 @@ export function switchTexture(
       0
     );
 }
+
+export const downloadPDF = async (url: string, filename = "Resume.pdf") => {
+  try {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const objectUrl = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = objectUrl;
+    a.download = filename;
+    a.style.display = "none";
+
+    document.body.appendChild(a);
+    a.click();
+
+    // Cleanup
+    document.body.removeChild(a);
+    URL.revokeObjectURL(objectUrl);
+  } catch (error) {
+    console.error("Error downloading PDF:", error);
+  }
+};
